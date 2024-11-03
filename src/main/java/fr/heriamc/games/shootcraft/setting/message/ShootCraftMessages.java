@@ -14,13 +14,20 @@ public enum ShootCraftMessages {
     KILL_MESSAGE("§fTu as tué §c%s §f!"),
     //VOID_DEATH_MESSAGE("§c%s §fest tombé..."),
 
-    /*/END_VICTORY_MESSAGE(
+    END_VICTORY_MESSAGE(
             "§m-------------------------------------------",
             "",
+            "§f§l➨ CLASSEMENT",
+            "",
             "%s",
+            "",
+            "§a① §f%s",
+            "§e② §f%s",
+            "§c③ §f%s",
+            "",
             "§fTu vas être redirigé vers le hub dans quelques secondes...",
             "",
-            "§m-------------------------------------------"),*/
+            "§m-------------------------------------------"),
 
     END_BACK_TO_HUB("§fRetour au hub dans §e%d §fsecondes !");
 

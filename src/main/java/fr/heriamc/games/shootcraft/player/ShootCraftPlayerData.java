@@ -8,6 +8,8 @@ public class ShootCraftPlayerData implements SerializableData<UUID> {
 
     private UUID uuid;
 
+    private int kills, deaths, playedGames, win, lose;
+
     @Override
     public UUID getIdentifier() {
         return uuid;

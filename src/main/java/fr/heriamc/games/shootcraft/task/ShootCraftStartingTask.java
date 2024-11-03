@@ -1,6 +1,7 @@
 package fr.heriamc.games.shootcraft.task;
 
 import fr.heriamc.api.game.GameState;
+import fr.heriamc.games.engine.point.SinglePoint;
 import fr.heriamc.games.engine.utils.task.countdown.CountdownTask;
 import fr.heriamc.games.engine.utils.task.countdown.GameCountdownTask;
 import fr.heriamc.games.shootcraft.ShootCraftGame;
@@ -42,13 +43,23 @@ public class ShootCraftStartingTask extends GameCountdownTask<ShootCraftGame> {
 
     @Override
     public void onComplete() {
-        game.setState(GameState.IN_GAME);
         game.getPlayers().values().forEach(settings.getBoardManager()::update);
-
-        // RUN GAME CYCLE TASK HERE
-        game.getGameCycleTask().run();
         game.fillTeam();
-        //game.getTeams().forEach(JumpScadeTeam::teleportMembers);
+
+        // GON THINGS NEED TO CHANGE FAST XDDD
+        var alivePlayers = game.getAlivePlayers();
+        var randomPoints = game.getSettings().getGameMapManager().getSpawnPoints().getPoints().stream().toList();
+
+        if (randomPoints.size() >= alivePlayers.size()) {
+            for (int i = 0; i < alivePlayers.size(); i++) {
+                var player = alivePlayers.get(i);
+                var point = randomPoints.get(i);
+                point.syncTeleport(player);
+                game.broadcast("TELEPORT " + player.getName() + " to x: " + point.getLocation().getX() + " to y: " + point.getLocation().getY() + " z: " + point.getLocation().getZ());
+            }
+        }
+
+        game.getGameCycleTask().run();
     }
 
     @Override

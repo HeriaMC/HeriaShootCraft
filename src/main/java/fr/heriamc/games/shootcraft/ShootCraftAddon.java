@@ -1,8 +1,10 @@
 package fr.heriamc.games.shootcraft;
 
 import fr.heriamc.games.api.addon.GameAddon;
+import fr.heriamc.games.engine.waitingroom.gui.GameTeamSelectorGui;
 import fr.heriamc.games.shootcraft.data.ShootCraftDataManager;
 import fr.heriamc.games.shootcraft.listener.*;
+import fr.heriamc.games.shootcraft.player.ShootCraftPlayer;
 import fr.heriamc.games.shootcraft.pool.ShootCraftPool;
 import lombok.Getter;
 
@@ -28,6 +30,10 @@ public class ShootCraftAddon extends GameAddon<ShootCraftPool> {
                 new PlayerInteractListener(this),
                 new PlayerChatListener(pool.getGamesManager())
         );
+    }
+
+    public void openTeamSelectorGui(ShootCraftGame game, ShootCraftPlayer gamePlayer) {
+        openGui(new GameTeamSelectorGui<>(game, gamePlayer, "Équipes"));
     }
 
     @Override

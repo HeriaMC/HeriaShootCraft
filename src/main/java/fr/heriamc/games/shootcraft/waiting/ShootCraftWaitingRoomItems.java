@@ -21,11 +21,11 @@ public enum ShootCraftWaitingRoomItems implements WaitingRoomItems {
 
     TEAM_SELECTOR (4,
             new ItemBuilder(Material.CHEST).setName("§eÉquipes§8・§7Clic droit").build(),
-            (shootCraftAddon, shootCraftGame, shootCraftPlayer) -> {}),
+            ShootCraftAddon::openTeamSelectorGui),
 
     LEAVE (8,
             new ItemBuilder(Material.BED).setName("§cQuitter§8・§7Clic droit").build(),
-            (shootCraftAddon, shootCraftGame, shootCraftPlayer) -> {});
+            (addon, game, gamePlayer) -> addon.redirectToHub(gamePlayer));
 
     private final int slot;
     private final ItemStack itemStack;
