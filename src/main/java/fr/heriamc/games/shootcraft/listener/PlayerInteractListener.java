@@ -25,7 +25,7 @@ public record PlayerInteractListener(ShootCraftAddon addon) implements Listener 
 
         switch (game.getState()) {
             case WAIT, STARTING -> ShootCraftWaitingRoomItems.getWaitingItem(itemStack).ifPresent(item -> item.getConsumer().accept(addon, game, gamePlayer));
-            case IN_GAME -> System.out.println("LE BATONGUE");
+            case END -> {}
         }
 
         event.setCancelled(true);

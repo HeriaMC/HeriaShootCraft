@@ -20,6 +20,17 @@ public class ShootCraftPlayer extends GamePlayer<ShootCraftTeam> {
                 team == null ? 999 : team.getColor().ordinal());
     }
 
+    public void onKill() {
+        addKill();
+        //addKillStreak();
+    }
+
+    public void onDeath() {
+        //this.lastAttacker = null;
+        addDeath();
+        //resetKillStreak();
+    }
+
     public void cleanUp() {
         player.getInventory().clear();
         player.getInventory().setArmorContents(null);

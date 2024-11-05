@@ -5,8 +5,11 @@ import fr.heriamc.games.engine.utils.task.countdown.CountdownTask;
 import fr.heriamc.games.engine.utils.task.countdown.GameCountdownTask;
 import fr.heriamc.games.shootcraft.ShootCraftGame;
 import fr.heriamc.games.shootcraft.player.ShootCraftPlayer;
+import fr.heriamc.games.shootcraft.player.gun.ShootCraftGun;
 
 public class ShootCraftGameCycleTask extends GameCountdownTask<ShootCraftGame> {
+
+    private final static ShootCraftGun gun = new ShootCraftGun();
 
     public ShootCraftGameCycleTask(ShootCraftGame game) {
         super(300, game);
@@ -15,7 +18,11 @@ public class ShootCraftGameCycleTask extends GameCountdownTask<ShootCraftGame> {
     @Override
     public void onStart() {
         game.setState(GameState.IN_GAME);
-        game.getAlivePlayers().forEach(ShootCraftPlayer::cleanUp);
+
+        game.getAlivePlayers().forEach(gamePlayer -> {
+            gamePlayer.cleanUp();
+            gun.giveItem(gamePlayer);
+        });
     }
 
     @Override

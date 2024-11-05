@@ -5,16 +5,18 @@ import java.util.List;
 
 public enum ShootCraftMessages {
 
-    PREFIX("§6§lSHOOTCRAFT §8┃ "),
+    PREFIX ("§6§lSHOOTCRAFT §8┃ "),
 
-    STARTING_CANCELLED("§cLancement de la partie annuler..."),
-    STARTING_MESSAGE("§fLancement dans §e%d §fsecondes !"),
+    STARTING_CANCELLED ("§cLancement de la partie annuler..."),
+    STARTING_MESSAGE ("§fLancement dans §e%d §fsecondes !"),
 
-    DEATH_MESSAGE("§fVous avez été tué par §c%s §f%s"),
-    KILL_MESSAGE("§fTu as tué §c%s §f!"),
+    TIME_LEFT_MESSAGE ("§fIl ne reste que %s pour effectuer le plus de kills !"),
+
+    DEATH_MESSAGE ("§fVous avez été tué par §c%s §f%s"),
+    KILL_MESSAGE ("§fTu as tué §c%s §f!"),
     //VOID_DEATH_MESSAGE("§c%s §fest tombé..."),
 
-    END_VICTORY_MESSAGE(
+    END_VICTORY_MESSAGE (
             "§m-------------------------------------------",
             "",
             "§f§l➨ CLASSEMENT",
@@ -29,7 +31,7 @@ public enum ShootCraftMessages {
             "",
             "§m-------------------------------------------"),
 
-    END_BACK_TO_HUB("§fRetour au hub dans §e%d §fsecondes !");
+    END_BACK_TO_HUB ("§fRetour au hub dans §e%d §fsecondes !");
 
     private String message;
     private String[] messages;

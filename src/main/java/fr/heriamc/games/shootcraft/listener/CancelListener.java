@@ -77,10 +77,7 @@ public class CancelListener implements Listener {
                 return;
             }
 
-            switch (game.getState()) {
-                case LOADING_IN_PROGRESS, LOADING, WAIT, STARTING, END -> event.setCancelled(true);
-                case ALWAYS_PLAYING, IN_GAME -> event.setCancelled(false);
-            }
+            event.setCancelled(true);
         }
     }
 

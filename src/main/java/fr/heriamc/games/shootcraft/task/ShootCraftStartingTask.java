@@ -1,7 +1,6 @@
 package fr.heriamc.games.shootcraft.task;
 
 import fr.heriamc.api.game.GameState;
-import fr.heriamc.games.engine.point.SinglePoint;
 import fr.heriamc.games.engine.utils.task.countdown.CountdownTask;
 import fr.heriamc.games.engine.utils.task.countdown.GameCountdownTask;
 import fr.heriamc.games.shootcraft.ShootCraftGame;
@@ -44,7 +43,7 @@ public class ShootCraftStartingTask extends GameCountdownTask<ShootCraftGame> {
     @Override
     public void onComplete() {
         game.getPlayers().values().forEach(settings.getBoardManager()::update);
-        game.fillTeam();
+        game.fillTeam(); // NEED TO FIX IN GAME API DONT USE PLAYERS MAP JUST USE ALIVEPLAYERS LIST
 
         // GON THINGS NEED TO CHANGE FAST XDDD
         var alivePlayers = game.getAlivePlayers();
@@ -54,8 +53,8 @@ public class ShootCraftStartingTask extends GameCountdownTask<ShootCraftGame> {
             for (int i = 0; i < alivePlayers.size(); i++) {
                 var player = alivePlayers.get(i);
                 var point = randomPoints.get(i);
+
                 point.syncTeleport(player);
-                game.broadcast("TELEPORT " + player.getName() + " to x: " + point.getLocation().getX() + " to y: " + point.getLocation().getY() + " z: " + point.getLocation().getZ());
             }
         }
 

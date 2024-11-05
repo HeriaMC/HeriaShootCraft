@@ -26,8 +26,8 @@ public class ShootCraftAddon extends GameAddon<ShootCraftPool> {
         registerListener(
                 new CancelListener(pool.getGamesManager()),
                 new PlayerConnectionListener(dataManager),
-                new PlayerDamageListener(pool.getGamesManager()),
                 new PlayerInteractListener(this),
+                new PlayerMoveListener(pool.getGamesManager()),
                 new PlayerChatListener(pool.getGamesManager())
         );
     }
