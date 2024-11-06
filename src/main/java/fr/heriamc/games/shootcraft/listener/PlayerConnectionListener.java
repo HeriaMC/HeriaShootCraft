@@ -3,11 +3,11 @@ package fr.heriamc.games.shootcraft.listener;
 import fr.heriamc.games.engine.event.player.GamePlayerJoinEvent;
 import fr.heriamc.games.engine.event.player.GamePlayerLeaveEvent;
 import fr.heriamc.games.engine.event.player.GamePlayerSpectateEvent;
+import fr.heriamc.games.engine.utils.NameTag;
 import fr.heriamc.games.engine.utils.concurrent.VirtualThreading;
 import fr.heriamc.games.shootcraft.ShootCraftGame;
 import fr.heriamc.games.shootcraft.data.ShootCraftDataManager;
 import fr.heriamc.games.shootcraft.player.ShootCraftPlayer;
-import fr.heriamc.games.shootcraft.utils.NameTag;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,10 +27,10 @@ public record PlayerConnectionListener(ShootCraftDataManager dataManager) implem
             case IN_GAME, END -> {
                 var rank = gamePlayer.getHeriaPlayer().getRank();
 
-                if (rank.getPower() >= 40 && gamePlayer.isSpectator()) {
+                /*if (rank.getPower() >= 40 && gamePlayer.isSpectator()) {
                     NameTag.setNameTag(player, rank.getPrefix(), " ", rank.getTabPriority());
                     return;
-                }
+                }*/
 
                 /*
                  GIVE SPECTATOR ITEM OR do interface SpectatorState ...
@@ -75,9 +75,7 @@ public record PlayerConnectionListener(ShootCraftDataManager dataManager) implem
         VirtualThreading.execute(() -> {
             var gamePlayerData = dataManager.createOrLoad(gamePlayer.getUuid());
 
-            /*gamePlayerData
-                    .updateKills(gamePlayer.getKills())
-                    .updateDeaths(gamePlayer.getDeaths());*/
+            gamePlayerData.updateStats(gamePlayer);
 
             dataManager.save(gamePlayerData);
             dataManager.saveInPersistant(gamePlayerData);

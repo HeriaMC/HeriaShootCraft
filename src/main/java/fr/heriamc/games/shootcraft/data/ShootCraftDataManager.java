@@ -14,7 +14,7 @@ public class ShootCraftDataManager extends PersistentDataManager<UUID, ShootCraf
 
     @Override
     public ShootCraftPlayerData getDefault() {
-        return new ShootCraftPlayerData();
+        return new ShootCraftPlayerData(null, 0, 0, 0);
     }
 
 }

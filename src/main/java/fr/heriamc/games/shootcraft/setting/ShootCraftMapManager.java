@@ -30,7 +30,7 @@ public class ShootCraftMapManager extends GameMapManager<ShootCraftGame, SlimeMa
         addMap(arena);
 
         mapLoader.load(waiting).whenComplete((slimeMap, throwable) -> {
-            slimeMap.setSpawn(-24.43999589895224, 108, -34.42004042421096, -180, 0);
+            slimeMap.setSpawn(-24.5, 108, -34.5, -180, 0);
             slimeMap.getWorld().setGameRuleValue("doFireTick", "false");
 
             game.getWaitingRoom().setMap(slimeMap);
